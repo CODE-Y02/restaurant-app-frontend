@@ -1,11 +1,13 @@
 import Header from "./components/Layout/Header";
+import MealSummary from "./components/Meals/MealSummary";
 
 function App() {
   return (
-    <div>
-      {/* <h2>Let's get started!</h2> */}
+    <>
       <Header />
-    </div>
+      {/* meal summary */}
+      <MealSummary />
+    </>
   );
 }
 
