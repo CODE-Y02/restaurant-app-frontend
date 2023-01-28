@@ -1,0 +1,20 @@
+.meal {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+
+  border-bottom: 1px solid lightslategray;
+}
+
+.name,
+.price {
+  font-size: large;
+  font-weight: bold;
+}
+.price {
+  color: red;
+}
+
+.description {
+  font-size: medium;
+}
