@@ -24,7 +24,7 @@ const Cart = ({ onCloseCart }) => {
       <CartItems className={classes["cart-items"]} items={cartCtx.items} />
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>100 $</span>
+        <span>{cartCtx.totalAmount} $</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={onCloseCart}>

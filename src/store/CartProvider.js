@@ -4,6 +4,7 @@ import CartContext from "./cart-context";
 
 const CartProvider = (props) => {
   const [items, setItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const addToCartHandler = (item) => {
     let itemIdx = items.findIndex((itm) => itm.id === item.id);
@@ -21,13 +22,31 @@ const CartProvider = (props) => {
     }
 
     setItems(newItem);
+
+    const total = Math.round(item.price * item.quantity);
+
+    setTotalAmount((oldTotal) => oldTotal + total);
   };
 
-  const removeFromCartHandler = (id) => {};
+  const removeFromCartHandler = (id) => {
+    const itemIdx = items.findIndex((itm) => itm.id === id);
+
+    let newItems = [...items];
+    const item = items[itemIdx].quantity;
+    if (item > 1) {
+      newItems[itemIdx].quantity--;
+    } else {
+      newItems = newItems.filter((itm) => itm.id !== id);
+    }
+
+    const total = Math.round(item.price * item.quantity);
+    setItems(newItems);
+    setTotalAmount((oldTotal) => oldTotal - total);
+  };
 
   const cartContext = {
     items: items,
-    totalAmount: 0,
+    totalAmount: totalAmount,
     addItem: addToCartHandler,
     removeItem: removeFromCartHandler,
   };

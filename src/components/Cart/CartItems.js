@@ -1,27 +1,5 @@
 import React from "react";
-
-import classes from "./CartItems.module.css";
-
-const CartItem = ({ item }) => {
-  return (
-    <li className={classes.cartItem}>
-      <div className={classes.details}>
-        <h2>{item.name}</h2>
-        <div className={classes.details_info}>
-          <span className={classes.price}>{item.price} $</span>
-
-          <span className={classes.qty}>
-            Qty: <span>{item.quantity}</span>
-          </span>
-        </div>
-      </div>
-      <div className={classes.controls}>
-        <button>+</button>
-        <button>-</button>
-      </div>
-    </li>
-  );
-};
+import CartItem from "./CartItem";
 
 const CartItems = ({ className, items }) => {
   // console.log(items);
