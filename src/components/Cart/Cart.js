@@ -19,12 +19,17 @@ const Cart = ({ onCloseCart }) => {
   //   </ul>
   // );
 
+  const totalAmount = cartCtx.items.reduce((currTotal, itm) => {
+    currTotal += Math.round(itm.price * itm.quantity);
+    return currTotal;
+  }, 0);
+
   return (
     <Modal onClose={onCloseCart}>
       <CartItems className={classes["cart-items"]} items={cartCtx.items} />
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>{cartCtx.totalAmount} $</span>
+        <span>{totalAmount} $</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={onCloseCart}>
