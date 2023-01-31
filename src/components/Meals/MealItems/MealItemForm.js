@@ -7,10 +7,13 @@ import classes from "./MealItemForm.module.css";
 const MealItemForm = ({ id, item }) => {
   const cartCtx = useContext(CartContext);
 
-  const addItemToCart = () => {
+  const addItemToCart = (e) => {
+    e.preventDefault();
     // get qty
     const quantity = Number(document.getElementById("amount" + id).value) || 0;
+    // console.log(quantity);
     cartCtx.addItem({ ...item, quantity });
+    document.getElementById("amount" + id).value = 1;
   };
 
   return (
@@ -27,9 +30,7 @@ const MealItemForm = ({ id, item }) => {
         }}
       />
 
-      <button type="button" onClick={addItemToCart}>
-        + Add
-      </button>
+      <button onClick={addItemToCart}>+ Add</button>
     </form>
   );
 };

@@ -10,6 +10,8 @@ const HeaderCartBtn = ({ onClick }) => {
     return currNum + item.quantity;
   }, 0);
 
+  // console.log(cartCtx.items);
+
   return (
     <button className={classes.button} onClick={onClick}>
       <span className={classes.icon}>

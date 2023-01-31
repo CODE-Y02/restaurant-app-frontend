@@ -9,10 +9,12 @@ const CartProvider = (props) => {
     let itemIdx = items.findIndex((itm) => itm.id === item.id);
     let newItem = [...items];
 
+    // console.log("item >>>>>", item);
+
     if (itemIdx >= 0) {
       //item exist
       // console.log(typeof newItem[itemIdx].quantity);
-      newItem[itemIdx].quantity++;
+      newItem[itemIdx].quantity += item.quantity;
     } else {
       // console.log(item);
       newItem.push(item);
