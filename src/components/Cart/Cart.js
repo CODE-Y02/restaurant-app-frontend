@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import classes from "./Cart.module.css";
 
-import { DUMMY_CART_ITEMS as CartItemData } from "../../DUMMY_DATA";
+// import { DUMMY_CART_ITEMS as CartItemData } from "../../DUMMY_DATA";
+
 import Modal from "../UI/Modal";
+import CartContext from "../../store/cart-context";
+import CartItems from "./CartItems";
 
 const Cart = ({ onCloseCart }) => {
-  const cartItems = (
-    <ul className={classes["cart-items"]}>
-      {CartItemData.map((item) => (
-        <li key={item.id}>{item.name} </li>
-      ))}
-    </ul>
-  );
+  const cartCtx = useContext(CartContext);
+
+  // const cartItems = (
+  //   <ul className={classes["cart-items"]}>
+  //     {cartCtx.items.map((item) => (
+  //       <li key={item.id}>{item.name}</li>
+  //     ))}
+  //   </ul>
+  // );
 
   return (
     <Modal onClose={onCloseCart}>
-      {cartItems}
+      <CartItems className={classes["cart-items"]} items={cartCtx.items} />
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>100 $</span>
